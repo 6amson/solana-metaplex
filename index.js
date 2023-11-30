@@ -5,9 +5,10 @@ import { mplBubblegum, transfer, fetchMerkleTree, getAssetWithProof, createTree 
 import { PublicKey } from '@solana/web3.js';
 
 const umi = createUmi('https://api.mainnet-beta.solana.com');
-const pubkey = 'ESwdeFc1zDdDvBAtU6opK2k12Q4X4FtnwMsbTf4AnRyN'
+const pubkey = 'ESwdeFc1zDdDvBAtU6opK2k12Q4X4FtnwMsbTf4AnRyN';
 const url = 'https://mainnet.helius-rpc.com/?api-key=9548d984-121d-4dfe-af51-f6c4e633d344';
 const assetId = "FJCs96hzcDH7sVNM4jC3q97hejSmMTAJEV9ctxqV765x";
+const creator_id = '92HUPk51xeheShRtCwbfmAWK1L4nmz4Z6uwLJYKgj4UJ';
 
 
 const merkleTree = generateSigner(umi)
@@ -41,6 +42,9 @@ const getAssetProof = async () => {
 const transferAssets = async () => {
     const assetWithProof = getAssetProof();
 
+    let currentLeafOwner; //to be replaced with the address of owner of cNFT
+    let newLeafOwner;     //to be replaced with the address of new owner of cNFT
+
     //to simulate soulboundNFT, we'd check if the current leafOwner is the newLeafOwner
     if (leafOwner == newLeaftOwner) {
         await transfer(umi, {
@@ -68,4 +72,5 @@ const getPDA = async () => {
     console.log(metadata);
 }
 
+getAssetProof();
 // transferAssets();
