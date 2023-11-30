@@ -46,7 +46,7 @@ const transferAssets = async () => {
     let newLeafOwner;     //to be replaced with the address of new owner of cNFT
 
     //to simulate soulboundNFT, we'd check if the current leafOwner is the newLeafOwner
-    if (leafOwner == newLeaftOwner) {
+    if (leafOwner == newLeafOwner) {
         await transfer(umi, {
             ...assetWithProof,
             leafOwner: currentLeafOwner,
